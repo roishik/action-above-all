@@ -30,6 +30,7 @@ const Calendar: React.FC<CalendarViewProps> = ({ meetings, onSelectMeeting }) =>
 
   // Handler for the calendar day click
   const handleDateSelect = (day: Date | undefined) => {
+    console.log("Date selected:", day);
     setSelectedDate(day);
   };
 
