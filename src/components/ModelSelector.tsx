@@ -74,8 +74,8 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({
       case "anthropic":
         newConfig.anthropicApiKey = apiKey;
         break;
-      case "mobileye":
-        newConfig.mobileyeApiKey = apiKey;
+      case "google":
+        newConfig.googleApiKey = apiKey;
         break;
     }
     
@@ -158,12 +158,12 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="mobileye-api-key">Mobileye API Key</Label>
+                <Label htmlFor="google-api-key">Google API Key</Label>
                 <Input 
-                  id="mobileye-api-key"
+                  id="google-api-key"
                   type="password"
-                  value={config.mobileyeApiKey || ""}
-                  onChange={(e) => handleApiKeyChange("mobileye", e.target.value)}
+                  value={config.googleApiKey || ""}
+                  onChange={(e) => handleApiKeyChange("google", e.target.value)}
                   placeholder="key-..."
                 />
               </div>

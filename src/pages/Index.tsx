@@ -1,8 +1,8 @@
+
 import React, { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { PlusCircle, Calendar as CalendarIcon } from "lucide-react";
-import ModelSelector from "@/components/ModelSelector";
 import Calendar from "@/components/Calendar";
 import MeetingForm from "@/components/MeetingForm";
 import SummaryOutput from "@/components/SummaryOutput";
@@ -146,17 +146,6 @@ const Index = () => {
               <span>New Meeting</span>
             </Button>
           </div>
-          
-          <div className="glass-card p-4 rounded-xl mb-6 animate-fade-in">
-            <ModelSelector
-              selectedProvider={selectedProvider}
-              selectedModel={selectedModel}
-              onProviderChange={setSelectedProvider}
-              onModelChange={setSelectedModel}
-              config={config}
-              onConfigChange={setConfig}
-            />
-          </div>
         </header>
 
         <main className="min-h-[600px]">
@@ -190,6 +179,10 @@ const Index = () => {
                   onGenerate={handleGenerateSummary}
                   selectedProvider={selectedProvider}
                   selectedModel={selectedModel}
+                  config={config}
+                  onProviderChange={setSelectedProvider}
+                  onModelChange={setSelectedModel}
+                  onConfigChange={setConfig}
                 />
               </TabsContent>
             </Tabs>

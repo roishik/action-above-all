@@ -28,7 +28,8 @@ import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import TagInput from "./TagInput";
-import { Meeting, Tag, Provider, Model } from "@/utils/types";
+import ModelSelector from "./ModelSelector";
+import { Meeting, Tag, Provider, Model, EnvironmentConfig } from "@/utils/types";
 import { sampleTags } from "@/utils/mockData";
 
 interface MeetingFormProps {
@@ -37,6 +38,10 @@ interface MeetingFormProps {
   onGenerate: (meeting: Meeting) => void;
   selectedProvider: Provider | undefined;
   selectedModel: Model | undefined;
+  config: EnvironmentConfig;
+  onProviderChange: (provider: Provider) => void;
+  onModelChange: (model: Model) => void;
+  onConfigChange: (config: EnvironmentConfig) => void;
 }
 
 const MeetingForm: React.FC<MeetingFormProps> = ({
@@ -44,7 +49,11 @@ const MeetingForm: React.FC<MeetingFormProps> = ({
   onSave,
   onGenerate,
   selectedProvider,
-  selectedModel
+  selectedModel,
+  config,
+  onProviderChange,
+  onModelChange,
+  onConfigChange
 }) => {
   const [name, setName] = useState(meeting?.name || "");
   const [date, setDate] = useState<Date | undefined>(meeting?.date || new Date());
@@ -119,6 +128,17 @@ const MeetingForm: React.FC<MeetingFormProps> = ({
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
+          <div className="glass-card p-4 rounded-xl">
+            <ModelSelector
+              selectedProvider={selectedProvider}
+              selectedModel={selectedModel}
+              onProviderChange={onProviderChange}
+              onModelChange={onModelChange}
+              config={config}
+              onConfigChange={onConfigChange}
+            />
+          </div>
+          
           <div className="space-y-4">
             <div className="grid gap-4 md:grid-cols-3">
               <div className="md:col-span-2 space-y-2">

@@ -4,15 +4,15 @@ import { Meeting, ModelOption, Tag } from "./types";
 export const modelOptions: ModelOption[] = [
   {
     provider: "openai",
-    models: ["gpt-4", "gpt-4-turbo", "gpt-3.5-turbo"]
+    models: ["gpt-4o", "gpt-4o-mini-high"]
   },
   {
     provider: "anthropic",
-    models: ["claude-3-opus", "claude-3-sonnet", "claude-3-haiku"]
+    models: ["claude-3-opus", "claude-3-sonnet"]
   },
   {
-    provider: "mobileye",
-    models: ["mobileye-large", "mobileye-small"]
+    provider: "google",
+    models: ["gemini-pro", "gemini-flash"]
   }
 ];
 

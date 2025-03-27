@@ -1,5 +1,5 @@
 
-export type Provider = 'openai' | 'anthropic' | 'mobileye';
+export type Provider = 'google' | 'anthropic' | 'openai';
 export type Model = string;
 
 export type ModelOption = {
@@ -29,5 +29,5 @@ export interface Meeting {
 export interface EnvironmentConfig {
   openaiApiKey?: string;
   anthropicApiKey?: string;
-  mobileyeApiKey?: string;
+  googleApiKey?: string;
 }
