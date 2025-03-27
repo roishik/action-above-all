@@ -34,9 +34,9 @@ const Calendar: React.FC<CalendarViewProps> = ({ meetings, onSelectMeeting }) =>
   };
 
   // Custom day rendering function to show dots for meetings
-  const renderDay = (day: Date, selectedDay: Date | undefined) => {
-    const meetingsOnDay = getMeetingsOnDay(day);
-    const isSelected = selectedDay && isSameDay(day, selectedDay);
+  const renderDay = (dayDate: Date) => {
+    const meetingsOnDay = getMeetingsOnDay(dayDate);
+    const isSelected = selectedDate && isSameDay(dayDate, selectedDate);
     
     return (
       <div className="relative w-full h-full flex items-center justify-center">
@@ -46,7 +46,7 @@ const Calendar: React.FC<CalendarViewProps> = ({ meetings, onSelectMeeting }) =>
             isSelected ? "bg-primary text-primary-foreground" : "hover:bg-secondary"
           )}
         >
-          {format(day, "d")}
+          {format(dayDate, "d")}
         </div>
         
         {meetingsOnDay.length > 0 && (
@@ -118,7 +118,7 @@ const Calendar: React.FC<CalendarViewProps> = ({ meetings, onSelectMeeting }) =>
             onMonthChange={setDate}
             className="rounded-md max-w-full"
             components={{
-              Day: ({ date: dayDate }) => renderDay(dayDate, selectedDate)
+              Day: ({ date: dayDate }) => renderDay(dayDate)
             }}
             showOutsideDays={false}
           />
